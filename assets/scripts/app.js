@@ -9,12 +9,13 @@ const events = require('./auth/authEvents')
 // require('./example')
 
 $(() => {
-  events.setLogIn()
-  $('#log-in-container').on('click', '#returning-user', events.setSignIn)
-  $('#log-in-container').on('click', '#new-user', events.setSignUp)
+  events.onSetLogIn()
+  $('#log-in-container').on('click', '#returning-user', events.onSetSignIn)
+  $('#log-in-container').on('click', '#new-user', events.onSetSignUp)
   $('#auth-container').on('submit', '#sign-in-form-group', events.onSignIn)
   $('#auth-container').on('submit', '#sign-up-form-group', events.onSignUp)
   $('#auth-container').on('submit', '#change-password', events.onChangePassword)
+  $('#auth-container').on('click', '#sign-out', events.onSignOut)
 
   $('#myDropdown #log-in-container').on({
     'click': function (e) {

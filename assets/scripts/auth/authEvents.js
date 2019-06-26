@@ -1,54 +1,73 @@
 'use strict'
-const ui = require('./authUi')
-const api = require('./authApi')
+const ui = require('./authUi.js')
+const api = require('./authApi.js')
+const store = require('./../store.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
-const setLogIn = function () {
+const onSetLogIn = function () {
   ui.setLogin()
   ui.setSignIn()
 }
 
-const setSignUp = function (event) {
-  event.preventDefault()
+const onSetSignUp = function (event) {
   ui.setSignUp()
 }
 
-const setSignIn = function (event) {
-  event.preventDefault()
+const onSetSignIn = function (event) {
   ui.setSignIn()
 }
 
 const onSignIn = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
 
   api.signIn(formData)
-    .then(ui.onSignInSuccess)
-    .catch(ui.onSignInFailure)
+    .then((response) => {
+      console.log(response)
+      store.user = response.user
+      ui.removeLogIn()
+      ui.setProfile()
+    })
+    .catch(console.error)
 }
 
 const onSignUp = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
 
   api.signUp(formData)
-    .then(ui.onSignInSuccess)
-    .catch(ui.onSignInFailure)
+    .then((response) => {
+      onSignIn(event) //  automatically sign-in the user
+    })
+    .catch(console.error)
+}
+
+const onSignOut = function (event) {
+  api.signOut()
+    .then((response) => {
+      store.user = {}
+      onSetLogIn()
+      ui.removeProfile()
+    })
+    .catch(console.error)
 }
 
 const onChangePassword = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
+  api.changePassword(formData)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch(console.error)
 }
 
 module.exports = {
-  setLogIn,
-  setSignUp,
-  setSignIn,
+  onSetLogIn,
+  onSetSignUp,
+  onSetSignIn,
   onSignIn,
   onSignUp,
-  onChangePassword
+  onChangePassword,
+  onSignOut
 }

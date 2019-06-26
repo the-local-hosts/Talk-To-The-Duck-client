@@ -24,9 +24,19 @@ const setSignUp = function () {
   $('#log-in-container').html(signUp)
 }
 
+const removeLogIn = function () {
+  $('#log-in').remove()
+}
+
+const removeProfile = function () {
+  $('#profile').remove()
+}
+
 module.exports = {
   setLogin,
   setSignIn,
   setSignUp,
-  setProfile
+  setProfile,
+  removeLogIn,
+  removeProfile
 }
