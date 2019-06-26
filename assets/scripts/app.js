@@ -10,10 +10,15 @@ const events = require('./auth/authEvents')
 
 $(() => {
   events.setLogIn()
-  $('#auth-container').on('click', '#new-user', events.setSignUp)
-  $('#auth-container').on('click', '#returning-user', events.setSignIn)
+  $('#log-in-container').on('click', '#returning-user', events.setSignIn)
+  $('#log-in-container').on('click', '#new-user', events.setSignUp)
+  $('#auth-container').on('submit', '#sign-in-form-group', events.onSignIn)
+  $('#auth-container').on('submit', '#sign-up-form-group', events.onSignUp)
+  $('#auth-container').on('submit', '#change-password', events.onChangePassword)
 
-  $('#myDropdown').on('hide.bs.dropdown', function () {
-    return false
+  $('#myDropdown #log-in-container').on({
+    'click': function (e) {
+      e.stopPropagation()
+    }
   })
 })
