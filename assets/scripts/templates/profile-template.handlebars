@@ -1,20 +1,19 @@
 <li class="nav-item" id="profile">
   <a data-toggle="dropdown" class="nav-link dropdown-toggle" id="username">
-    <img src="public/images/avatar.png" />
+    <!-- <img src="public/images/avatar.png" /> -->
   </a>
-  <ul class="dropdown-menu form-wrapper dropdown-menu-right">
-    <li><p class="feedback"></p></li>
-      <li>
-        <form id="change-password">
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Old Password" name="passwords[old]" required="required">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="New Password" name="passwords[new]" required="required">
-          </div>
-          <input type="submit" class="btn btn-primary btn-block" value="Change Password">
-        </form>
-      </li>
-      <button class="btn btn-danger" type="button" name="button" id="sign-out">Sign-Out</button>
-    </ul>
+  <div class="dropdown-menu p-4 dropdown-menu-right">
+    <p class="feedback"></p>
+    <form class="" id="change-password">
+      <p>Change password:</p>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Old Password" name="passwords[old]" required="required">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="New Password" name="passwords[new]" required="required">
+      </div>
+      <input type="submit" class="btn btn-primary btn-block" value="Change Password">
+    </form>
+    <button class="btn btn-danger m-2" type="button" name="button" id="sign-out">Sign-Out</button>
+  </div>
 </li>

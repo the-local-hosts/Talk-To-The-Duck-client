@@ -48,9 +48,6 @@ const onSignOut = function (event) {
     .then((response) => {
       store.user = {}
       onSetLogIn()
-      // ui.removeProfile()
-      // ui.setLogin()
-      // ui.setSignIn()
     })
     .catch(console.error)
 }
