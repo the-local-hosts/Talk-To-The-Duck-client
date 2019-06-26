@@ -32,11 +32,16 @@ const removeProfile = function () {
   $('#profile').remove()
 }
 
+const setUserNameInNavBar = function (name) {
+  $('#username').text(`Hello ${name}!`)
+}
+
 module.exports = {
   setLogin,
   setSignIn,
   setSignUp,
   setProfile,
+  setUserNameInNavBar,
   removeLogIn,
   removeProfile
 }

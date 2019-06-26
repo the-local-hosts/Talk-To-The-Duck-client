@@ -17,9 +17,10 @@ $(() => {
   $('#auth-container').on('submit', '#change-password', events.onChangePassword)
   $('#auth-container').on('click', '#sign-out', events.onSignOut)
 
-  $('#myDropdown #log-in-container').on({
+  $('#auth-container #log-in-container').on({
     'click': function (e) {
       e.stopPropagation()
+      console.log('here')
     }
   })
 })
