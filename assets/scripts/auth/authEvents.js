@@ -27,6 +27,7 @@ const onSignIn = function (event) {
       store.user = response.user
       ui.removeLogIn()
       ui.setProfile()
+      ui.setUserNameInNavBar(store.user.name)
     })
     .catch(console.error)
 }
@@ -47,7 +48,9 @@ const onSignOut = function (event) {
     .then((response) => {
       store.user = {}
       onSetLogIn()
-      ui.removeProfile()
+      // ui.removeProfile()
+      // ui.setLogin()
+      // ui.setSignIn()
     })
     .catch(console.error)
 }
