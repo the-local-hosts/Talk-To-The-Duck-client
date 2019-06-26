@@ -1,5 +1,7 @@
 'use strict'
 
+const events = require('./auth/authEvents')
+
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -7,5 +9,11 @@
 // require('./example')
 
 $(() => {
-  // your JS code goes here
+  events.setLogIn()
+  $('#auth-container').on('click', '#new-user', events.setSignUp)
+  $('#auth-container').on('click', '#returning-user', events.setSignIn)
+
+  $('#myDropdown').on('hide.bs.dropdown', function () {
+    return false
+  })
 })
