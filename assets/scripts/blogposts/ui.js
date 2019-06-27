@@ -47,6 +47,10 @@ const updateModal = function () {
   $('#update-post').modal('toggle')
 }
 
+const onDeleteSuccess = function () {
+  $('#message').text('Post deleted!')
+}
+
 module.exports = {
   onSetAllPosts,
   showCreateForm,
@@ -54,5 +58,6 @@ module.exports = {
   onCreateSuccess,
   onClickMore,
   onClickLess,
-  updateModal
+  updateModal,
+  onDeleteSuccess
 }
