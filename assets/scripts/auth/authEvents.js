@@ -29,6 +29,7 @@ const onSignIn = function (event) {
       ui.setProfile()
       ui.setUserNameInNavBar(store.user.name)
     })
+    .then(ui.welcomeMessage)
     .catch(console.error)
 }
 
@@ -49,6 +50,7 @@ const onSignOut = function (event) {
       store.user = {}
       onSetLogIn()
     })
+    .then(ui.signOutSuccess)
     .catch(console.error)
 }
 
@@ -56,9 +58,7 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
   api.changePassword(formData)
-    .then((response) => {
-      console.log(response)
-    })
+    .then(ui.changePasswordSuccess)
     .catch(console.error)
 }
 

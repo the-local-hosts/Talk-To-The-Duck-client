@@ -16,10 +16,13 @@ const showCreateForm = function () {
 
 const onFailure = function () {
   $('#message').text('Something went wrong, please try again')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 const onCreateSuccess = function () {
   $('#message').text('Successfully added!')
+  setTimeout(() => $('#message').text(''), 4000)
+  $('form').trigger('reset')
 }
 
 const onClickMore = function () {
