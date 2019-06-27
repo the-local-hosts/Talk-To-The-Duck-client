@@ -49,6 +49,7 @@ const updateModal = function () {
 
 const onDeleteSuccess = function () {
   $('#message').text('Post deleted!')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 module.exports = {
