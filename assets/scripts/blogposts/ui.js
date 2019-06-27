@@ -14,11 +14,11 @@ const showCreateForm = function () {
 }
 
 const onFailure = function () {
-  $('#message').val('Something went wrong, please try again')
+  $('#message').text('Something went wrong, please try again')
 }
 
 const onCreateSuccess = function () {
-  $('#message').val('Successfully added!')
+  $('#message').text('Successfully added!')
 }
 
 module.exports = {
