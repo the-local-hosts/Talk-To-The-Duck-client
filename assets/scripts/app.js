@@ -11,6 +11,7 @@ const blogpostsUi = require('./blogposts/ui.js')
 // require('./example')
 
 $(() => {
+  // User authentication listeners
   $('#auth-container').on('click', '#returning-user', authEventsHandler.onSetSignIn)
   $('#auth-container').on('click', '#new-user', authEventsHandler.onSetSignUp)
   $('#auth-container').on('submit', '#sign-in-form-group', authEventsHandler.onSignIn)
@@ -21,13 +22,16 @@ $(() => {
     e.stopPropagation()
   })
 
-  $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
+  // User interaction with post listeners
+  $('#auth-container').on('click', '#create-new-post', blogpostsUi.showCreateForm)
+  $('#auth-container').on('click', '#go-back', blogpostsEventsHandler.onSetAllPosts)
   $('.container').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
   $('.container').on('click', '.more-btn', blogpostsUi.onClickMore)
   $('.container').on('click', '.less-btn', blogpostsUi.onClickLess)
 
   $('.container').on('click', '.btn-danger', blogpostsEventsHandler.onDeletePost)
   $('.container').on('click', '.btn-info', blogpostsEventsHandler.onUpdateModal)
+  $('.modals').on('submit', '#update-post-form', blogpostsEventsHandler.onUpdatePost)
 
   blogpostsEventsHandler.onGetPosts() // get all posts before user sign-in
   authEventsHandler.onSetLogIn() // Important run this method last

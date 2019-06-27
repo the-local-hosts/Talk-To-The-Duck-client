@@ -8,20 +8,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="update-post-form">
           <div class="form-group">
             <label for="title-update">Title</label>
-            <input type="text" class="form-control" id="title-update">
+            <input type="text" class="form-control" id="title-update" name=blogpost[title]>
           </div>
           <div class="form-group">
             <label for="content-update">Content</label>
-            <textarea class="form-control" id="content-update" rows="3"></textarea>
+            <textarea class="form-control" id="content-update" rows="3" name=blogpost[postBody]></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button class="btn btn-primary" type="submit" form="update-post-form">Save changes</button>
       </div>
     </div>
   </div>

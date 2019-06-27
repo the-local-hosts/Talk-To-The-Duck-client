@@ -13,15 +13,14 @@
       <span class="hidden expand">
         {{ splitTextSecondHalf post.postBody }}
       </span>
-
         <button class="less-btn hidden" data-val="{{post.id}}">Show Less</button>
     </p>
     <p>{{ formatDate post.createdAt }}</p>
     <p>Comments: {{post.comments.length}}</p>
 
     {{#if (userPosts post.owner._id)}}
-    <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
-    <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
+      <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
+      <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
     {{/if}}
   </section>
 {{/each}}

@@ -3,15 +3,21 @@
 const indexTemplate = require('../templates/index.handlebars')
 const newBlogpostTemplate = require('../templates/new-blogpost.handlebars')
 const updateTemplate = require('./../templates/update-modal.handlebars')
+const showAllPosts = require('./../templates/show-posts-button.handlebars')
+const createPostButton = require('./../templates/create-post-button.handlebars')
 
-const onSetAllPosts = function (posts) {
+const setAllPosts = function (posts) {
+  const createPost = createPostButton()
   const indexHTML = indexTemplate({ posts: posts })
   $('.container').html(indexHTML)
+  $('.navigate-between-post-creation').html(createPost)
 }
 
 const showCreateForm = function () {
+  const postsButton = showAllPosts()
   const newBlogpostHtml = newBlogpostTemplate
   $('.container').html(newBlogpostHtml())
+  $('.navigate-between-post-creation').html(postsButton)
 }
 
 const onFailure = function () {
@@ -41,10 +47,15 @@ const onClickLess = function () {
   $(`#${id}`).find('.more-btn').removeClass('hidden')
 }
 
-const updateModal = function () {
+const updateModal = function (event) {
   const updateModal = updateTemplate()
-  $('.modals').html(updateModal)
-  $('#update-post').modal('toggle')
+  $('.modals').html(updateModal) // adds modal to it's container
+  const postId = $(event.target).data('update') // grab the post ID
+  const title = $(`[data-title=${postId}]`).text() // get content from post title
+  const content = $(`[data-body=${postId}]`).text() // get content from post body
+  $('#title-update').val(title) // set the title in modal
+  $('#content-update').val(content) // set the content in modal
+  $('#update-post').modal('toggle') // show modal
 }
 
 const onDeleteSuccess = function () {
@@ -53,7 +64,7 @@ const onDeleteSuccess = function () {
 }
 
 module.exports = {
-  onSetAllPosts,
+  setAllPosts,
   showCreateForm,
   onFailure,
   onCreateSuccess,
