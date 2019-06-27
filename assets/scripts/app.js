@@ -21,6 +21,7 @@ $(() => {
     e.stopPropagation()
   })
   $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
+  $('.main-content').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
 
   blogpostsEventsHandler.onGetPosts()
   authEventsHandler.onSetLogIn() // Important run this method last
