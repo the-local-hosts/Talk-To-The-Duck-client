@@ -1,5 +1,8 @@
+
+
 {{#each posts as |post|}}
   {{log post}}
+  {{log formatDate post.createdAt}}
   <section data-id="{{post.id}}">
     <h3>{{post.title}}</h3>
 
@@ -12,6 +15,7 @@
       {{/if}}
     </p>
     <p>{{ post.postBody }}</p>
+    <p>{{ formatDate post.createdAt }}</p>
 
   </section>
 
