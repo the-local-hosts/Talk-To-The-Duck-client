@@ -22,6 +22,8 @@ $(() => {
   })
   $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
   $('.main-content').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
+  $('.main-content').on('click', '.more-btn', blogpostsUi.onClickMore)
+  $('.main-content').on('click', '.less-btn', blogpostsUi.onClickLess)
 
   blogpostsEventsHandler.onGetPosts()
   authEventsHandler.onSetLogIn() // Important run this method last
