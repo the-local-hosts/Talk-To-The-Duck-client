@@ -1,16 +1,12 @@
-
-
 {{#each posts as |post|}}
 
   <section id="{{post.id}}">
     <h3>{{post.title}}</h3>
 
-    <h6>Written By:</h6>
-    <p>
       {{#if post.owner.name}}
-        {{post.owner.name}}
+        <h5>Written by: {{post.owner.name}}</h5>
       {{else}}
-        Anonymous Contributor
+        <h5>Anonymous Contributor</h5>
       {{/if}}
     </p>
     <p>{{ splitTextFirstHalf post.postBody }}
@@ -24,9 +20,6 @@
 
     </p>
     <p>{{ formatDate post.createdAt }}</p>
-
+    <p>Comments: {{post.comments.length}}</p>
   </section>
-
-
-
 {{/each}}
