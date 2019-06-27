@@ -2,16 +2,16 @@
 
 const indexTemplate = require('../templates/index.handlebars')
 const newBlogpostTemplate = require('../templates/new-blogpost.handlebars')
-require('readmore-js/dist/readmore.js')
+const updateTemplate = require('./../templates/update-modal.handlebars')
 
-const onIndexSuccess = function (responseData) {
-  const indexHTML = indexTemplate({ posts: responseData.posts })
-  $('.main-content').html(indexHTML)
+const onSetAllPosts = function (posts) {
+  const indexHTML = indexTemplate({ posts: posts })
+  $('.container').html(indexHTML)
 }
 
 const showCreateForm = function () {
   const newBlogpostHtml = newBlogpostTemplate
-  $('.main-content').html(newBlogpostHtml())
+  $('.container').html(newBlogpostHtml())
 }
 
 const onFailure = function () {
@@ -41,11 +41,18 @@ const onClickLess = function () {
   $(`#${id}`).find('.more-btn').removeClass('hidden')
 }
 
+const updateModal = function () {
+  const updateModal = updateTemplate()
+  $('.modals').html(updateModal)
+  $('#update-post').modal('toggle')
+}
+
 module.exports = {
-  onIndexSuccess,
+  onSetAllPosts,
   showCreateForm,
   onFailure,
   onCreateSuccess,
   onClickMore,
-  onClickLess
+  onClickLess,
+  updateModal
 }
