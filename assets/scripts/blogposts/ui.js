@@ -2,6 +2,7 @@
 
 const indexTemplate = require('../templates/index.handlebars')
 const newBlogpostTemplate = require('../templates/new-blogpost.handlebars')
+require('readmore-js/dist/readmore.js')
 
 const onIndexSuccess = function (responseData) {
   const indexHTML = indexTemplate({ posts: responseData.posts })
@@ -21,9 +22,27 @@ const onCreateSuccess = function () {
   $('#message').text('Successfully added!')
 }
 
+const onClickMore = function () {
+  const id = $(this).data('num')
+  $(`#${id}`).find('.dots').addClass('hidden')
+  $(`#${id}`).find('.expand').removeClass('hidden')
+  $(this).addClass('hidden')
+  $(`#${id}`).find('.less-btn').removeClass('hidden')
+}
+
+const onClickLess = function () {
+  const id = $(this).data('val')
+  $(`#${id}`).find('.dots').removeClass('hidden')
+  $(`#${id}`).find('.expand').addClass('hidden')
+  $(this).addClass('hidden')
+  $(`#${id}`).find('.more-btn').removeClass('hidden')
+}
+
 module.exports = {
   onIndexSuccess,
   showCreateForm,
   onFailure,
-  onCreateSuccess
+  onCreateSuccess,
+  onClickMore,
+  onClickLess
 }
