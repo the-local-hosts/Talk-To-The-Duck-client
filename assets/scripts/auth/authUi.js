@@ -54,6 +54,11 @@ const welcomeMessage = function () {
   setTimeout(() => $('#message').text(''), 4000)
 }
 
+const onAuthFailure = function () {
+  $('#message').text('Something went wrong, please try again')
+  setTimeout(() => $('#message').text(''), 4000)
+}
+
 module.exports = {
   setLogin,
   setSignIn,
@@ -64,5 +69,6 @@ module.exports = {
   removeProfile,
   changePasswordSuccess,
   signOutSuccess,
-  welcomeMessage
+  welcomeMessage,
+  onAuthFailure
 }
