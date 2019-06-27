@@ -1,15 +1,13 @@
 {{#each posts as |post|}}
-
   <section id="{{post.id}}">
-    <h3>{{post.title}}</h3>
-
+    <h3 data-title={{post.id}}>{{post.title}}</h3>
       {{#if post.owner.name}}
         <h5>Written by: {{post.owner.name}}</h5>
       {{else}}
         <h5>Anonymous Contributor</h5>
       {{/if}}
     </p>
-    <p>{{ splitTextFirstHalf post.postBody }}
+    <p data-body={{post.id}}>{{ splitTextFirstHalf post.postBody }}
       <span class="dots">...</span>
       <button class="more-btn" data-num="{{post.id}}">Read More</button>
       <span class="hidden expand">
@@ -17,9 +15,13 @@
       </span>
 
         <button class="less-btn hidden" data-val="{{post.id}}">Show Less</button>
-
     </p>
     <p>{{ formatDate post.createdAt }}</p>
     <p>Comments: {{post.comments.length}}</p>
+
+    {{#if (userPosts post.owner._id)}}
+    <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
+    <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
+    {{/if}}
   </section>
 {{/each}}

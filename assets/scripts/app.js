@@ -20,11 +20,15 @@ $(() => {
   $('#auth-container').on('click', '#log-in-container', function (e) {
     e.stopPropagation()
   })
-  $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
-  $('.main-content').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
-  $('.main-content').on('click', '.more-btn', blogpostsUi.onClickMore)
-  $('.main-content').on('click', '.less-btn', blogpostsUi.onClickLess)
 
-  blogpostsEventsHandler.onGetPosts()
+  $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
+  $('.container').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
+  $('.container').on('click', '.more-btn', blogpostsUi.onClickMore)
+  $('.container').on('click', '.less-btn', blogpostsUi.onClickLess)
+
+  $('.container').on('click', '.btn-danger', blogpostsEventsHandler.onDeletePost)
+  $('.container').on('click', '.btn-info', blogpostsEventsHandler.onUpdateModal)
+
+  blogpostsEventsHandler.onGetPosts() // get all posts before user sign-in
   authEventsHandler.onSetLogIn() // Important run this method last
 })
