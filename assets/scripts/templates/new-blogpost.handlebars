@@ -1,6 +1,6 @@
 <h3>Write New Post</h3>
 <form id="new-blogpost">
-  <input type="text" required name=blogpost[title] placeholder="Name It!">
-  <input type="text" required name=blogpost[postBody] placeholder="Write It!">
+  <textarea required rows="1" cols="60" name=blogpost[title] maxlength="60" placeholder="Name It!"></textarea>
+  <textarea required rows="12" cols="90" maxlength="8000" name=blogpost[postBody] placeholder="Write It!"></textarea>
   <input type="submit" value="Post It!">
 </form>
