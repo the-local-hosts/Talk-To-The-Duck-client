@@ -26,6 +26,7 @@ const setSignUp = function () {
 
 const removeLogIn = function () {
   $('#log-in').remove()
+  $('#create-new-post').removeClass('hidden')
 }
 
 const removeProfile = function () {
