@@ -2,14 +2,18 @@
 
 const api = require('./api.js')
 const ui = require('./ui.js')
-const getFormFields = require('../../../lib/get-form-fields')
 const store = require('./../store.js')
+const getFormFields = require('../../../lib/get-form-fields')
+
+const onSetAllPosts = function () {
+  ui.setAllPosts(store.posts)
+}
 
 const onGetPosts = function () {
   api.index()
     .then((response) => {
       store.posts = response.posts
-      ui.onSetAllPosts(store.posts)
+      onSetAllPosts()
     })
     .catch(ui.onFailure)
 }
@@ -25,8 +29,13 @@ const onCreatePost = function (event) {
 }
 
 const onUpdateModal = function (event) {
-  // const title = store
-  ui.updateModal()
+  ui.updateModal(event)
+}
+
+const onUpdatePost = function (event) {
+  event.preventDefault()
+  const formData = getFormFields(event.target)
+  console.log(formData) // need to make the update call to api but first I need to fix the string
 }
 
 const onDeletePost = function (event) {
@@ -41,5 +50,7 @@ module.exports = {
   onGetPosts,
   onCreatePost,
   onUpdateModal,
-  onDeletePost
+  onDeletePost,
+  onSetAllPosts,
+  onUpdatePost
 }

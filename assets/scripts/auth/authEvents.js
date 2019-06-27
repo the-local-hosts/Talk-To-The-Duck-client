@@ -1,6 +1,6 @@
 'use strict'
 const ui = require('./authUi.js')
-const postsUI = require('./../blogposts/ui.js')
+const postsEvents = require('./../blogposts/events.js')
 const api = require('./authApi.js')
 const store = require('./../store.js')
 const getFormFields = require('../../../lib/get-form-fields')
@@ -24,12 +24,11 @@ const onSignIn = function (event) {
 
   api.signIn(formData)
     .then((response) => {
-      console.log(response)
       store.user = response.user
       ui.removeLogIn()
       ui.setProfile()
       ui.setUserNameInNavBar(store.user.name)
-      postsUI.onSetAllPosts(store.posts)
+      postsEvents.onSetAllPosts()
     })
     .then(ui.welcomeMessage)
     .catch(ui.onAuthFailure)
@@ -50,7 +49,7 @@ const onSignOut = function (event) {
   api.signOut()
     .then((response) => {
       store.user = {}
-      postsUI.onSetAllPosts(store.posts)
+      postsEvents.onSetAllPosts(store.posts)
       onSetLogIn()
     })
     .then(ui.signOutSuccess)
