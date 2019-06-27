@@ -30,7 +30,11 @@ const onUpdateModal = function (event) {
 }
 
 const onDeletePost = function (event) {
-  console.log(event.target)
+  const id = $(event.target).data('delete')
+  api.destroy(id)
+    .then(ui.onDeleteSuccess)
+    .then(onGetPosts)
+    .catch(ui.onFailure)
 }
 
 module.exports = {

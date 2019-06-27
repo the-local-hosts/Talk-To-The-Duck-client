@@ -32,7 +32,7 @@ const onSignIn = function (event) {
       postsUI.onSetAllPosts(store.posts)
     })
     .then(ui.welcomeMessage)
-    .catch(console.error)
+    .catch(ui.onAuthFailure)
 }
 
 const onSignUp = function (event) {
@@ -43,7 +43,7 @@ const onSignUp = function (event) {
     .then((response) => {
       onSignIn(event) //  automatically sign-in the user
     })
-    .catch(console.error)
+    .catch(ui.onAuthFailure)
 }
 
 const onSignOut = function (event) {
@@ -54,7 +54,7 @@ const onSignOut = function (event) {
       onSetLogIn()
     })
     .then(ui.signOutSuccess)
-    .catch(console.error)
+    .catch(ui.onAuthFailure)
 }
 
 const onChangePassword = function (event) {
@@ -62,7 +62,7 @@ const onChangePassword = function (event) {
   const formData = getFormFields(event.target)
   api.changePassword(formData)
     .then(ui.changePasswordSuccess)
-    .catch(console.error)
+    .catch(ui.onAuthFailure)
 }
 
 module.exports = {
