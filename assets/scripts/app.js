@@ -2,6 +2,7 @@
 
 const authEventsHandler = require('./auth/authEvents')
 const blogpostsEventsHandler = require('./blogposts/events.js')
+const blogpostsUi = require('./blogposts/ui.js')
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
@@ -19,6 +20,8 @@ $(() => {
   $('#auth-container').on('click', '#log-in-container', function (e) {
     e.stopPropagation()
   })
+  $('header').on('click', '#create-new-post', blogpostsUi.showCreateForm)
+  $('.main-content').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
 
   blogpostsEventsHandler.onGetPosts()
   authEventsHandler.onSetLogIn() // Important run this method last
