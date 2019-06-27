@@ -1,6 +1,7 @@
 'use strict'
 
 const authEventsHandler = require('./auth/authEvents')
+const blogpostsEventsHandler = require('./blogposts/events.js')
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
@@ -19,5 +20,6 @@ $(() => {
     e.stopPropagation()
   })
 
+  blogpostsEventsHandler.onGetPosts()
   authEventsHandler.onSetLogIn() // Important run this method last
 })
