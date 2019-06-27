@@ -13,7 +13,17 @@ const showCreateForm = function () {
   $('.main-content').html(newBlogpostHtml())
 }
 
+const onFailure = function () {
+  $('#message').val('Something went wrong, please try again')
+}
+
+const onCreateSuccess = function () {
+  $('#message').val('Successfully added!')
+}
+
 module.exports = {
   onIndexSuccess,
-  showCreateForm
+  showCreateForm,
+  onFailure,
+  onCreateSuccess
 }
