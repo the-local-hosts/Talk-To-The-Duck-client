@@ -27,6 +27,7 @@ const setSignUp = function () {
 const removeLogIn = function () {
   $('#log-in').remove()
   $('#create-new-post').removeClass('hidden')
+  $('form').trigger('reset')
 }
 
 const removeProfile = function () {
@@ -37,6 +38,22 @@ const setUserNameInNavBar = function (name) {
   $('#username').text(`Hello ${name}!`)
 }
 
+const changePasswordSuccess = function () {
+  $('#message').text('Password changed successfully!')
+  setTimeout(() => $('#message').text(''), 4000)
+  $('form').trigger('reset')
+}
+
+const signOutSuccess = function () {
+  $('#message').text('Signed out - Come back soon!')
+  setTimeout(() => $('#message').text(''), 4000)
+}
+
+const welcomeMessage = function () {
+  $('#message').text('Signed in and ready to go!')
+  setTimeout(() => $('#message').text(''), 4000)
+}
+
 module.exports = {
   setLogin,
   setSignIn,
@@ -44,5 +61,8 @@ module.exports = {
   setProfile,
   setUserNameInNavBar,
   removeLogIn,
-  removeProfile
+  removeProfile,
+  changePasswordSuccess,
+  signOutSuccess,
+  welcomeMessage
 }
