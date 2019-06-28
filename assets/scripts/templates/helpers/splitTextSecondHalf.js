@@ -6,7 +6,7 @@
 
 const splitTextSecondHalf = (text) => {
   const wordArray = text.split(' ')
-  const secondHalf = wordArray.slice(101).join(' ')
+  const secondHalf = wordArray.slice(100).join(' ')
   return secondHalf
 }
 

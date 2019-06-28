@@ -29,6 +29,12 @@
     <p>Comments: {{post.comments.length}}</p>
 
     {{#if (userPosts post.owner._id)}}
+
+      <form class="add-comment" data-blogid="{{post.id}}">
+        <input type="text" name="comment" placeholder="Write Comment!" required />
+        <input type="submit" value="Add Comment" />
+      </form>
+
       <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
       <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
     {{/if}}

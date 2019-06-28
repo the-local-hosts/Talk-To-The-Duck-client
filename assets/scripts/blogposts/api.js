@@ -42,9 +42,22 @@ const destroy = function (id) {
   })
 }
 
+const createComment = function (formData) {
+  console.log(formData)
+  return $.ajax({
+    url: config.apiUrl + '/blogposts/' + formData.post_id + '/comments',
+    method: 'POST',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   create,
   update,
-  destroy
+  destroy,
+  createComment
 }
