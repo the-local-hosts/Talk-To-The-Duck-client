@@ -5,6 +5,7 @@ const newBlogpostTemplate = require('../templates/new-blogpost.handlebars')
 const updateTemplate = require('./../templates/update-modal.handlebars')
 const showAllPosts = require('./../templates/show-posts-button.handlebars')
 const createPostButton = require('./../templates/create-post-button.handlebars')
+const store = require('./../store.js')
 
 const setAllPosts = function (responseData) {
   const createPost = createPostButton()
@@ -82,6 +83,15 @@ const onDeleteSuccess = function () {
   setTimeout(() => $('#message').text(''), 4000)
 }
 
+const onAddCommentSuccess = function () {
+  $(`#${store.post_id}`).find('.comment-message').text('Successfully added!')
+  setTimeout(() => $(`#${store.post_id}`).find('.comment-message').text(''), 4000)
+  $('form').trigger('reset')
+  let num = $(`#${store.post_id}`).find('.number-comments').text()
+  num = Number(num) + 1
+  $(`#${store.post_id}`).find('.number-comments').html(num)
+}
+
 module.exports = {
   setAllPosts,
   showCreateForm,
@@ -90,5 +100,6 @@ module.exports = {
   onClickMore,
   onClickLess,
   updateModal,
-  onDeleteSuccess
+  onDeleteSuccess,
+  onAddCommentSuccess
 }
