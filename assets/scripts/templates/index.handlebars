@@ -56,7 +56,8 @@
     {{/if}}
 
     {{#if (userPosts post.owner._id)}}
-
+    <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
+    <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
 
     {{/if}}
   </section>
