@@ -11,6 +11,7 @@ const setAllPosts = function (posts) {
   const indexHTML = indexTemplate({ posts: posts })
   $('.container').html(indexHTML)
   $('.navigate-between-post-creation').html(createPost)
+}
 
 const onIndexSuccess = function (responseData) {
   for (let i = 0; i < responseData.posts.length; i++) {
@@ -82,5 +83,6 @@ module.exports = {
   onClickMore,
   onClickLess,
   updateModal,
-  onDeleteSuccess
+  onDeleteSuccess,
+  onIndexSuccess
 }
