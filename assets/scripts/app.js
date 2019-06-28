@@ -18,6 +18,8 @@ $(() => {
   $('#auth-container').on('submit', '#sign-up-form-group', authEventsHandler.onSignUp)
   $('#auth-container').on('submit', '#change-password', authEventsHandler.onChangePassword)
   $('#auth-container').on('click', '#sign-out', authEventsHandler.onSignOut)
+  $('#auth-container').on('click', '#edit-profile-picture', authEventsHandler.onEditPicture)
+  $('.modals').on('submit', '#image-upload', authEventsHandler.onSetPicture)
   $('#auth-container').on('click', '#log-in-container', function (e) {
     e.stopPropagation()
   })
