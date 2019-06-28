@@ -6,24 +6,31 @@ const updateTemplate = require('./../templates/update-modal.handlebars')
 const showAllPosts = require('./../templates/show-posts-button.handlebars')
 const createPostButton = require('./../templates/create-post-button.handlebars')
 
-const setAllPosts = function (posts) {
+const setAllPosts = function (responseData) {
   const createPost = createPostButton()
-  const indexHTML = indexTemplate({ posts: posts })
+  for (let i = 0; i < responseData.length; i++) {
+    if (responseData[i].postBody.length > 700) {
+      responseData[i]['longPost'] = true
+    } else {
+      responseData[i]['longPost'] = false
+    }
+  }
+  const indexHTML = indexTemplate({ posts: responseData })
   $('.container').html(indexHTML)
   $('.navigate-between-post-creation').html(createPost)
 }
 
-const onIndexSuccess = function (responseData) {
-  for (let i = 0; i < responseData.posts.length; i++) {
-    if (responseData.posts[i].postBody.length > 600) {
-      responseData.posts[i]['longPost'] = true
-    } else {
-      responseData.posts[i]['longPost'] = false
-    }
-  }
-  const indexHTML = indexTemplate({ posts: responseData.posts })
-  $('.main-content').html(indexHTML)
-}
+// const onIndexSuccess = function (responseData) {
+//   for (let i = 0; i < responseData.posts.length; i++) {
+//     if (responseData.posts[i].postBody.length > 700) {
+//       responseData.posts[i]['longPost'] = true
+//     } else {
+//       responseData.posts[i]['longPost'] = false
+//     }
+//   }
+//   const indexHTML = indexTemplate({ posts: responseData.posts })
+//   $('.main-content').html(indexHTML)
+// }
 
 const showCreateForm = function () {
   const postsButton = showAllPosts()
@@ -83,6 +90,5 @@ module.exports = {
   onClickMore,
   onClickLess,
   updateModal,
-  onDeleteSuccess,
-  onIndexSuccess
+  onDeleteSuccess
 }

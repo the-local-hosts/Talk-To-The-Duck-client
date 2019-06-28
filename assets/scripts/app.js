@@ -32,6 +32,7 @@ $(() => {
   $('.container').on('click', '.btn-danger', blogpostsEventsHandler.onDeletePost)
   $('.container').on('click', '.btn-info', blogpostsEventsHandler.onUpdateModal)
   $('.modals').on('submit', '#update-post-form', blogpostsEventsHandler.onUpdatePost)
+  $('.container').on('submit', '.add-comment', blogpostsEventsHandler.onAddComment)
 
   blogpostsEventsHandler.onGetPosts() // get all posts before user sign-in
   authEventsHandler.onSetLogIn() // Important run this method last

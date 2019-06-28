@@ -46,11 +46,23 @@ const onDeletePost = function (event) {
     .catch(ui.onFailure)
 }
 
+const onAddComment = function (event) {
+  event.preventDefault()
+  const blogId = $(event.target).data('blogid')
+  const form = event.target
+  const formData = getFormFields(form)
+  formData.post_id = blogId
+  api.createComment(formData)
+    .then(() => console.log('yay'))
+    .catch(ui.onFailure)
+}
+
 module.exports = {
   onGetPosts,
   onCreatePost,
   onUpdateModal,
   onDeletePost,
   onSetAllPosts,
-  onUpdatePost
+  onUpdatePost,
+  onAddComment
 }
