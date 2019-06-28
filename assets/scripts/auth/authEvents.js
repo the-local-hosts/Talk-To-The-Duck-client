@@ -31,6 +31,7 @@ const onSignIn = function (event) {
       postsEvents.onSetAllPosts()
     })
     .then(ui.welcomeMessage)
+    .then(postsEvents.onGetPosts)
     .catch(ui.onAuthFailure)
 }
 
@@ -54,6 +55,7 @@ const onSignOut = function (event) {
       onSetLogIn()
     })
     .then(ui.signOutSuccess)
+    .then(postsEvents.onGetPosts)
     .catch(ui.onAuthFailure)
 }
 
