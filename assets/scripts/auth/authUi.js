@@ -14,8 +14,8 @@ const setPictureModal = function () {
 }
 
 const changeProfilePicture = function (url) {
-  console.log(url.upload.url)
   $('#image-display').attr('src', url.upload.url)
+  $('#profile-update-modal').modal('toggle')
 }
 
 const setProfilePicture = function () {
