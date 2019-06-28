@@ -1,4 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+main {
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .hidden {
   display: none;
@@ -22,4 +30,29 @@ textarea {
   margin-bottom: 15px;
   margin-left: 90px;
   display: center;
+.container {
+  // background-color: cyan;
+  width: 70%;
+}
+
+main > h5 {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.each-post {
+  border: 5px solid black;
+  margin: 80px auto;
+  padding: 50px;
+  text-align: left;
+}
+
+.each-post > button {
+  margin: 10px;
+  padding: 10px;
+}
+
+.each-post > form {
+  margin: 10px;
+  padding: 10px;
 }
