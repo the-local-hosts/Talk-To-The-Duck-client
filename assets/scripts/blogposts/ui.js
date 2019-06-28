@@ -71,10 +71,10 @@ const updateModal = function (event) {
   const updateModal = updateTemplate()
   $('.modals').html(updateModal) // adds modal to it's container
   const postId = $(event.target).data('update') // grab the post ID
-  const title = $(`[data-title=${postId}]`).text() // get content from post title
-  const content = $(`[data-body=${postId}]`).text() // get content from post body
-  $('#title-update').val(title) // set the title in modal
-  $('#content-update').val(content) // set the content in modal
+  const post = store.posts.find(post => post.id === postId)
+  store.postToUpdate = post
+  $('#title-update').val(post.title) // set the title in modal
+  $('#content-update').val(post.postBody) // set the content in modal
   $('#update-post').modal('toggle') // show modal
 }
 

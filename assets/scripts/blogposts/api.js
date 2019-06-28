@@ -21,9 +21,9 @@ const create = function (formData) {
   })
 }
 
-const update = function (formData) {
+const update = function (formData, id) {
   return $.ajax({
-    url: config.apiUrl + '/blogposts/' + formData.post.id,
+    url: config.apiUrl + '/blogposts/' + id,
     method: 'PATCH',
     data: formData,
     headers: {
