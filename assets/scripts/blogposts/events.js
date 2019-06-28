@@ -35,7 +35,12 @@ const onUpdateModal = function (event) {
 const onUpdatePost = function (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData) // need to make the update call to api but first I need to fix the string
+  api.update(formData, store.postToUpdate.id)
+    .then(() => {
+      onGetPosts()
+      $('#update-post').modal('toggle') // show modal
+    })
+    .catch(console.error)// need to make the update call to api but first I need to fix the string
 }
 
 const onDeletePost = function (event) {
