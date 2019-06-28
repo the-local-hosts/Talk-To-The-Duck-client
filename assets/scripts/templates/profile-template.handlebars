@@ -4,8 +4,11 @@
   <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="username">
     <!-- <img src="public/images/avatar.png" /> -->
   </a>
+
   <div class="dropdown-menu p-4 dropdown-menu-right">
-    <p class="feedback"></p>
+    <div class="image">
+      <img id="image-display" src=""/>
+    </div>
     <form class="" id="change-password">
       <p>Change password:</p>
       <div class="form-group">
@@ -16,6 +19,7 @@
       </div>
       <input type="submit" class="btn btn-primary btn-block" value="Change Password">
     </form>
+    <button class="btn btn-danger m-2" type="button" name="button" id="edit-profile-picture">Edit Profile Picture</button>
     <button class="btn btn-danger m-2" type="button" name="button" id="sign-out">Sign-Out</button>
   </div>
 </li>

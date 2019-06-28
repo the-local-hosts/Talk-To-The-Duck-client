@@ -1,14 +1,32 @@
 'use strict'
 
+const store = require('./../store.js')
 const logInTemplate = require('../templates/log-in-template.handlebars')
 const signInTemplate = require('../templates/sign-in-template.handlebars')
 const signUpTemplate = require('../templates/sign-up-template.handlebars')
 const profileTemplate = require('../templates/profile-template.handlebars')
+const updateTemplate = require('./../templates/editProfilePic.handlebars')
+
+const setPictureModal = function () {
+  const updateModal = updateTemplate()
+  $('.modals').html(updateModal)
+  $('#profile-update-modal').modal('toggle')
+}
+
+const changeProfilePicture = function (url) {
+  $('#image-display').attr('src', url.upload.url)
+  $('#profile-update-modal').modal('toggle')
+}
+
+const setProfilePicture = function () {
+  $('#image-display').attr('src', store.user.url)
+}
 
 const setLogin = function () {
   const logIn = logInTemplate()
   $('#auth-container').html(logIn)
 }
+
 const setProfile = function () {
   const profile = profileTemplate()
   $('#auth-container').html(profile)
@@ -70,5 +88,8 @@ module.exports = {
   changePasswordSuccess,
   signOutSuccess,
   welcomeMessage,
+  setPictureModal,
+  setProfilePicture,
+  changeProfilePicture,
   onAuthFailure
 }
