@@ -52,8 +52,9 @@ const onAddComment = function (event) {
   const form = event.target
   const formData = getFormFields(form)
   formData.post_id = blogId
+  store.post_id = blogId
   api.createComment(formData)
-    .then(() => console.log('yay'))
+    .then(ui.onAddCommentSuccess)
     .catch(ui.onFailure)
 }
 

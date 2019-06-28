@@ -48,7 +48,8 @@ const onSignUp = function (event) {
 const onSignOut = function (event) {
   api.signOut()
     .then((response) => {
-      store.user = {}
+      store.user = false
+      // store.user = {}
       postsEvents.onSetAllPosts(store.posts)
       onSetLogIn()
     })
