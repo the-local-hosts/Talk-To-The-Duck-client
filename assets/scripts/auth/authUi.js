@@ -75,6 +75,7 @@ const welcomeMessage = function () {
 const onAuthFailure = function () {
   $('#message').text('Something went wrong, please try again')
   setTimeout(() => $('#message').text(''), 4000)
+  $('form').trigger('reset')
 }
 
 module.exports = {
