@@ -1,5 +1,5 @@
 {{#each posts as |post|}}
-  <section id="{{post.id}}">
+  <section class="each-post" id="{{post.id}}">
     <h3 data-title={{post.id}}>{{post.title}}</h3>
       {{#if post.owner.name}}
         <h5>Written by: {{post.owner.name}}</h5>
@@ -58,8 +58,6 @@
     {{#if (userPosts post.owner._id)}}
 
 
-      <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
-      <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
     {{/if}}
   </section>
 {{/each}}
