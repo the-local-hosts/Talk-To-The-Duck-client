@@ -53,10 +53,21 @@ const onAddComment = function (event) {
   const formData = getFormFields(form)
   formData.post_id = blogId
   store.post_id = blogId
+  store.addedComment = formData.comment
   api.createComment(formData)
     .then(ui.onAddCommentSuccess)
     .catch(ui.onFailure)
 }
+
+// const onDeleteComment = function (event) {
+//   const commentId = $(event.target).data('deletecomment')
+//   const blogId = $(this).find('.recordblogid').data('recordblogid')
+//   console.log('comment', commentId)
+//   console.log('post', blogId)
+//   api.commentDestroy(commentId, blogId)
+//     .then(() => console.log('delete suceces'))
+//     .catch(ui.onFailure)
+// }
 
 module.exports = {
   onGetPosts,
@@ -66,4 +77,5 @@ module.exports = {
   onSetAllPosts,
   onUpdatePost,
   onAddComment
+  // onDeleteComment
 }

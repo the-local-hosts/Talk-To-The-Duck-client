@@ -28,12 +28,31 @@
     <p>{{ formatDate post.createdAt }}</p>
     <p>Comments: <span class="number-comments">{{post.comments.length}}</span></p>
 
+
+    <div class="comments">
+    {{#each post.comments as |comment|}}
+
+    <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
+
+    {{#if (userPosts comment.postedBy._id)}}
+    <button type="button" class="btn btn-danger deleteComment" data-deletecomment="{{comment._id}}">Delete</button>
+    {{/if}}
+  </p>
+
+    {{/each}}
+    <span class="recordblogid" data-recordblogid="{{post.id}}"></span>
+  </div>
+
+
+
     {{#if (isLoggedIn)}}
     <form class="add-comment" data-blogid="{{post.id}}">
       <p class="comment-message"></p>
       <input type="text" name="comment" placeholder="Write Comment!" required />
       <input type="submit" value="Add Comment" />
     </form>
+    {{else}}
+    <p>Log in to Comment!</p>
     {{/if}}
 
     {{#if (userPosts post.owner._id)}}

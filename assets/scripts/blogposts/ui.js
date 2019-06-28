@@ -79,6 +79,7 @@ const updateModal = function (event) {
 }
 
 const onDeleteSuccess = function () {
+  $('html,body').scrollTop(0)
   $('#message').text('Post deleted!')
   setTimeout(() => $('#message').text(''), 4000)
 }
@@ -90,6 +91,7 @@ const onAddCommentSuccess = function () {
   let num = $(`#${store.post_id}`).find('.number-comments').text()
   num = Number(num) + 1
   $(`#${store.post_id}`).find('.number-comments').html(num)
+  $(`#${store.post_id}`).find('.comments').append(`<p><strong>You said:</strong> ${store.addedComment}</p>`)
 }
 
 module.exports = {
