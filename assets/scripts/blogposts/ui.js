@@ -11,6 +11,17 @@ const setAllPosts = function (posts) {
   const indexHTML = indexTemplate({ posts: posts })
   $('.container').html(indexHTML)
   $('.navigate-between-post-creation').html(createPost)
+
+const onIndexSuccess = function (responseData) {
+  for (let i = 0; i < responseData.posts.length; i++) {
+    if (responseData.posts[i].postBody.length > 600) {
+      responseData.posts[i]['longPost'] = true
+    } else {
+      responseData.posts[i]['longPost'] = false
+    }
+  }
+  const indexHTML = indexTemplate({ posts: responseData.posts })
+  $('.main-content').html(indexHTML)
 }
 
 const showCreateForm = function () {
