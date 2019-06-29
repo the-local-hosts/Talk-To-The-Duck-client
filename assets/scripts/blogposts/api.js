@@ -63,11 +63,23 @@ const commentDestroy = function (commentId, blogId) {
   })
 }
 
+const commentUpdate = function (formData, postId, commentId) {
+  return $.ajax({
+    url: config.apiUrl + '/blogposts/' + postId + '/comments/' + commentId,
+    method: 'PATCH',
+    data: formData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   index,
   create,
   update,
   destroy,
   createComment,
-  commentDestroy
+  commentDestroy,
+  commentUpdate
 }
