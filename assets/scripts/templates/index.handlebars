@@ -3,8 +3,8 @@
     <div class="title-container">
       <h3 class="post-title"data-title={{post.id}}>{{post.title}}</h3>
       {{#if (userPosts post.owner._id)}}
-        <button type="button" class="btn btn-info btn-sm mx-1 update-post" data-update={{post.id}}>Update</button>
-        <button type="button" class="btn btn-danger btn-sm mx-1 delete-post" data-delete={{post.id}}>Delete</button>
+        <button type="button" class="btn btn-info btn-sm mx-1 update-post" data-update={{post.id}}>Update Post</button>
+        <button type="button" class="btn btn-danger btn-sm mx-1 delete-post" data-delete={{post.id}}>Delete Post</button>
       {{else}}
         {{#if (isLoggedIn)}}
           <button type="button" class="btn btn-info btn-sm follow-user" data-follow={{post.id}}>Follow Creator</button>
@@ -26,14 +26,16 @@
     </p>
 </div>
     <p>{{ formatDate post.createdAt }}</p>
-    <hr>
-    <p>Comments: <span class="number-comments">{{post.comments.length}}</span></p>
+    <div class="">
+      <button type="button" class="btn btn-outline-primary btn-sm"></button>
+      <span>Comments: <span class="number-comments">{{post.comments.length}}</span></span>
+    </div>
     <div class="comments">
     {{#each post.comments as |comment|}}
       <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
       {{#if (userPosts comment.postedBy._id)}}
-        <button type="button" class="btn btn-info btn-sm mx-1 update-comment" data-deletecomment="{{comment._id}}">Delete</button>
-        <button type="button" class="btn btn-danger btn-sm mx-1 delete-comment" data-deletecomment="{{comment._id}}">Delete</button>
+        <button type="button" class="btn btn-info btn-sm mx-1 update-comment" data-deletecomment="{{comment._id}}">Update Comment</button>
+        <button type="button" class="btn btn-danger btn-sm mx-1 delete-comment" data-deletecomment="{{comment._id}}">Delete Comment</button>
       {{/if}}
     </p>
     {{/each}}
@@ -41,10 +43,10 @@
     <span class="recordblogid" data-recordblogid="{{post.id}}"></span>
     </div>
     {{#if (isLoggedIn)}}
-    <form class="add-comment" data-blogid="{{post.id}}">
+    <form class="form-inline add-comment" data-blogid="{{post.id}}">
       <p class="comment-message"></p>
-      <input type="text" name="comment" placeholder="Write Comment!" required />
-      <input type="submit" value="Add Comment" />
+      <input class="form-control mb-2 mr-sm-2" type="text" name="comment" placeholder="Write Comment!" required />
+      <button class="btn btn-primary mb-2" type="submit">Add Comment</button>
     </form>
     {{else}}
     <p>Log in to Comment!</p>

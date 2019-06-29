@@ -1,15 +1,19 @@
 <div class="navigate-between-post-creation">
 </div>
-<li class="nav-item" id="profile">
+<li class="nav-item profile-dropdown" id="profile">
   <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#" id="username">
     <!-- <img src="public/images/avatar.png" /> -->
   </a>
 
   <div class="dropdown-menu p-4 dropdown-menu-right">
-    <div class="image">
+    <div class="image-container">
       <img id="image-display" src=""/>
     </div>
-    <form class="" id="change-password">
+    <div class="followers-info">
+      <span>Followers: {{howMany followers}}</span>
+      <span>following: {{howMany following}}</span>
+    </div>
+    <form class="password-form" id="change-password">
       <p>Change password:</p>
       <div class="form-group">
         <input type="password" class="form-control" placeholder="Old Password" name="passwords[old]" required="required">
@@ -17,9 +21,11 @@
       <div class="form-group">
         <input type="password" class="form-control" placeholder="New Password" name="passwords[new]" required="required">
       </div>
-      <input type="submit" class="btn btn-primary btn-block" value="Change Password">
+      <input type="submit" class="btn btn-primary btn-block my-1" value="Change Password">
     </form>
-    <button class="btn btn-danger m-2" type="button" name="button" id="edit-profile-picture">Edit Profile Picture</button>
-    <button class="btn btn-danger m-2" type="button" name="button" id="sign-out">Sign-Out</button>
+    <div class="profile-action-buttons">
+      <button class="btn btn-danger my-1" type="button" name="button" id="edit-profile-picture">Edit Profile Picture</button>
+      <button class="btn btn-danger my-1" type="button" name="button" id="sign-out">Sign-Out</button>
+    </div>
   </div>
 </li>
