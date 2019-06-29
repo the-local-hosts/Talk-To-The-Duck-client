@@ -89,6 +89,7 @@ const onUpdateComment = function (event) {
     .then(() => {
       onGetPosts()
     })
+    .then(ui.onUpdateCommentSuccess)
     .catch(ui.onFailure)
 }
 

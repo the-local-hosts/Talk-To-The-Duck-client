@@ -86,6 +86,10 @@ const onShowUpdate = function () {
   $(this).parent().next().removeClass('hidden')
 }
 
+const onUpdateCommentSuccess = function () {
+  $(this).parent().next().addClass('hidden')
+}
+
 module.exports = {
   setAllPosts,
   showCreateForm,
@@ -96,5 +100,6 @@ module.exports = {
   updateModal,
   onDeleteSuccess,
   onAddCommentSuccess,
-  onShowUpdate
+  onShowUpdate,
+  onUpdateCommentSuccess
 }
