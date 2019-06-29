@@ -38,6 +38,15 @@ textarea {
   width: 70%;
 }
 
+.title-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-title {
+  flex-grow: 1;
+}
+
 main > h5 {
   margin-top: 80px;
   text-align: center;
