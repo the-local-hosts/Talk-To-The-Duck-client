@@ -2,6 +2,7 @@
 
 const api = require('./api.js')
 const ui = require('./ui.js')
+const authUI = require('./../auth/authUi.js')
 const store = require('./../store.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
@@ -92,6 +93,21 @@ const onUpdateComment = function (event) {
     .then(ui.onUpdateCommentSuccess)
     .catch(ui.onFailure)
 }
+const onFollowUser = function (event) {
+  const postID = $(event.target).data('follow')
+  const post = store.posts.find(post => post.id === postID)
+  const userToFollowID = post.owner._id
+  api.followUser(userToFollowID)
+    .then((response) => {
+      store.user = response.user
+      authUI.setProfile()
+      authUI.setProfile()
+      authUI.setUserNameInNavBar(store.user.name)
+      authUI.setProfilePicture()
+      onSetAllPosts()
+    })
+    .catch(console.error)
+}
 
 module.exports = {
   onGetPosts,
@@ -102,5 +118,6 @@ module.exports = {
   onUpdatePost,
   onAddComment,
   onDeleteComment,
-  onUpdateComment
+  onUpdateComment,
+  onFollowUser
 }

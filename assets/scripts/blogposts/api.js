@@ -73,6 +73,15 @@ const commentUpdate = function (formData, postId, commentId) {
     }
   })
 }
+const followUser = function (userToFollowID) {
+  return $.ajax({
+    url: config.apiUrl + '/follow/' + userToFollowID,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   index,
@@ -81,5 +90,6 @@ module.exports = {
   destroy,
   createComment,
   commentDestroy,
-  commentUpdate
+  commentUpdate,
+  followUser
 }

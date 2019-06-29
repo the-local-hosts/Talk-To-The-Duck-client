@@ -28,7 +28,6 @@ const setLogin = function () {
 }
 
 const setProfile = function () {
-  console.log(store.user)
   const profile = profileTemplate(
     {followers: store.user.followers,
       following: store.user.following})

@@ -30,7 +30,6 @@ $(() => {
   $('.container').on('submit', '#new-blogpost', blogpostsEventsHandler.onCreatePost)
   $('.container').on('click', '.more-btn', blogpostsUi.onClickMore)
   $('.container').on('click', '.less-btn', blogpostsUi.onClickLess)
-
   $('.container').on('click', '.delete-post', blogpostsEventsHandler.onDeletePost)
   $('.container').on('click', '.update-post', blogpostsEventsHandler.onUpdateModal)
   $('.modals').on('submit', '#update-post-form', blogpostsEventsHandler.onUpdatePost)
@@ -38,6 +37,7 @@ $(() => {
   $('.container').on('click', '.delete-comment', blogpostsEventsHandler.onDeleteComment)
   $('.container').on('click', '.show-update-comment', blogpostsUi.onShowUpdate)
   $('.container').on('submit', '.update-comment', blogpostsEventsHandler.onUpdateComment)
+  $('.container').on('click', '.follow-user', blogpostsEventsHandler.onFollowUser)
 
   blogpostsEventsHandler.onGetPosts() // get all posts before user sign-in
   authEventsHandler.onSetLogIn() // Important run this method last
