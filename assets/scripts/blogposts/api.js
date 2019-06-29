@@ -53,21 +53,21 @@ const createComment = function (formData) {
   })
 }
 
-// const commentDestroy = function (commentId, blogId) {
-//   return $.ajax({
-//     url: config.apiUrl + '/blogposts/' + blogId + '/comments/' + commentId,
-//     method: 'DELETE',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const commentDestroy = function (commentId, blogId) {
+  return $.ajax({
+    url: config.apiUrl + '/blogposts/' + blogId + '/comments/' + commentId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   index,
   create,
   update,
   destroy,
-  createComment
-  // commentDestroy
+  createComment,
+  commentDestroy
 }

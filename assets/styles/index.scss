@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 main {
-  font-family: 'Quicksand', sans-serif;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  justify-content: center;
 }
 
 .hidden {
@@ -22,19 +23,28 @@ textarea {
 
 .navbar .image img {
   border-radius: 40%;
-  width: 60px;
-  height: 60px;
-  // margin: -8px 0;
+  display: center;
   display: block;
   display: inline-block;
+  height: 60px;
+  // margin: -8px 0;
   margin-bottom: 15px;
   margin-left: 90px;
-  display: center;
+  width: 60px;
 }
 
 .container {
   // background-color: cyan;
   width: 70%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-title {
+  flex-grow: 1;
 }
 
 main > h5 {
@@ -55,6 +65,5 @@ main > h5 {
 }
 
 .each-post > form {
-  margin: 10px;
-  padding: 10px;
+  margin-left: -5px;
 }

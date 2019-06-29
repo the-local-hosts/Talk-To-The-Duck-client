@@ -1,50 +1,45 @@
 {{#each posts as |post|}}
   <section class="each-post" id="{{post.id}}">
-    <h3 data-title={{post.id}}>{{post.title}}</h3>
-      {{#if post.owner.name}}
-        <h5>Written by: {{post.owner.name}}</h5>
+    <div class="title-container">
+      <h3 class="post-title"data-title={{post.id}}>{{post.title}}</h3>
+      {{#if (userPosts post.owner._id)}}
+        <button type="button" class="btn btn-info btn-sm mx-1 update-post" data-update={{post.id}}>Update</button>
+        <button type="button" class="btn btn-danger btn-sm mx-1 delete-post" data-delete={{post.id}}>Delete</button>
       {{else}}
-        <h5>Anonymous Contributor</h5>
+        {{#if (isLoggedIn)}}
+          <button type="button" class="btn btn-info btn-sm follow-user" data-follow={{post.id}}>Follow Creator</button>
+        {{/if}}
       {{/if}}
-    </p>
-
-      {{#if post.longPost}}
-
-    <p class="a-post" data-body={{post.id}}>
-      {{ splitTextFirstHalf post.postBody }}
-      <span class="dots">...</span>
-      <button class="more-btn" data-num="{{post.id}}">Read More</button>
-      <span class="hidden expand">
-        {{ splitTextSecondHalf post.postBody }}
+    </div>
+    <h5>Written by: {{post.owner.name}}</h5>
+    <div class="a-post">
+{{#if post.longPost}}
+<!-- do not change ugliness, it is necessary for formatting -->
+<p data-body={{post.id}}>
+{{ splitTextFirstHalf post.postBody }}<span class="dots"> . . .</span> <button class="more-btn" data-num="{{post.id}}">Read More</button><span class="hidden expand">{{ splitTextSecondHalf post.postBody }}
       </span>
-        <button class="less-btn hidden" data-val="{{post.id}}">Show Less</button>
+<button class="less-btn hidden" data-val="{{post.id}}">Show Less</button>
 
         {{else}}
-          {{post.postBody}}
+{{post.postBody}}
         {{/if}}
-
     </p>
-
+</div>
     <p>{{ formatDate post.createdAt }}</p>
+    <hr>
     <p>Comments: <span class="number-comments">{{post.comments.length}}</span></p>
-
-
     <div class="comments">
     {{#each post.comments as |comment|}}
-
-    <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
-
-    {{#if (userPosts comment.postedBy._id)}}
-    <button type="button" class="btn btn-danger deleteComment" data-deletecomment="{{comment._id}}">Delete</button>
-    {{/if}}
-  </p>
-
+      <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
+      {{#if (userPosts comment.postedBy._id)}}
+        <button type="button" class="btn btn-info btn-sm mx-1 update-comment" data-deletecomment="{{comment._id}}">Delete</button>
+        <button type="button" class="btn btn-danger btn-sm mx-1 delete-comment" data-deletecomment="{{comment._id}}">Delete</button>
+      {{/if}}
+    </p>
     {{/each}}
+
     <span class="recordblogid" data-recordblogid="{{post.id}}"></span>
-  </div>
-
-
-
+    </div>
     {{#if (isLoggedIn)}}
     <form class="add-comment" data-blogid="{{post.id}}">
       <p class="comment-message"></p>
@@ -53,12 +48,6 @@
     </form>
     {{else}}
     <p>Log in to Comment!</p>
-    {{/if}}
-
-    {{#if (userPosts post.owner._id)}}
-    <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
-    <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
-
     {{/if}}
   </section>
 {{/each}}
