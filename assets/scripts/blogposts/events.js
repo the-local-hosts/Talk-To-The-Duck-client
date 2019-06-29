@@ -79,6 +79,19 @@ const onDeleteComment = function (event) {
     .catch(ui.onFailure)
 }
 
+const onUpdateComment = function (event) {
+  event.preventDefault()
+  const commentId = $(event.target).data('updatecomment')
+  const form = event.target
+  const formData = getFormFields(form)
+  const post = store.posts.find((post) => post.comments.find(comment => comment._id === commentId))
+  api.commentUpdate(formData, post.id, commentId)
+    .then(() => {
+      onGetPosts()
+    })
+    .catch(ui.onFailure)
+}
+
 module.exports = {
   onGetPosts,
   onCreatePost,
@@ -87,5 +100,6 @@ module.exports = {
   onSetAllPosts,
   onUpdatePost,
   onAddComment,
-  onDeleteComment
+  onDeleteComment,
+  onUpdateComment
 }

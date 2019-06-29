@@ -21,18 +21,6 @@ const setAllPosts = function (responseData) {
   $('.navigate-between-post-creation').html(createPost)
 }
 
-// const onIndexSuccess = function (responseData) {
-//   for (let i = 0; i < responseData.posts.length; i++) {
-//     if (responseData.posts[i].postBody.length > 700) {
-//       responseData.posts[i]['longPost'] = true
-//     } else {
-//       responseData.posts[i]['longPost'] = false
-//     }
-//   }
-//   const indexHTML = indexTemplate({ posts: responseData.posts })
-//   $('.main-content').html(indexHTML)
-// }
-
 const showCreateForm = function () {
   const postsButton = showAllPosts()
   const newBlogpostHtml = newBlogpostTemplate
@@ -93,6 +81,11 @@ const onAddCommentSuccess = function () {
   $(`#${store.post_id}`).find('.number-comments').html(num)
 }
 
+const onShowUpdate = function () {
+  $(this).addClass('hidden')
+  $(this).parent().next().removeClass('hidden')
+}
+
 module.exports = {
   setAllPosts,
   showCreateForm,
@@ -102,5 +95,6 @@ module.exports = {
   onClickLess,
   updateModal,
   onDeleteSuccess,
-  onAddCommentSuccess
+  onAddCommentSuccess,
+  onShowUpdate
 }
