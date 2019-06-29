@@ -23,8 +23,10 @@ const onCreatePost = function (event) {
   const form = event.target
   const formData = getFormFields(form)
   api.create(formData)
-    .then(ui.onCreateSuccess)
-    .then(onGetPosts)
+    .then(() => {
+      ui.onCreateSuccess()
+      onGetPosts()
+    })
     .catch(ui.onFailure)
 }
 
@@ -60,19 +62,22 @@ const onAddComment = function (event) {
   store.post_id = blogId
   store.addedComment = formData.comment
   api.createComment(formData)
-    .then(ui.onAddCommentSuccess)
+    .then(() => {
+      ui.onAddCommentSuccess()
+      onGetPosts()
+    })
     .catch(ui.onFailure)
 }
 
-// const onDeleteComment = function (event) {
-//   const commentId = $(event.target).data('deletecomment')
-//   const blogId = $(this).find('.recordblogid').data('recordblogid')
-//   console.log('comment', commentId)
-//   console.log('post', blogId)
-//   api.commentDestroy(commentId, blogId)
-//     .then(() => console.log('delete suceces'))
-//     .catch(ui.onFailure)
-// }
+const onDeleteComment = function (event) {
+  const commentId = $(event.target).data('deletecomment')
+  const post = store.posts.find((post) => post.comments.find(comment => comment._id === commentId))
+  api.commentDestroy(commentId, post.id)
+    .then(() => {
+      onGetPosts()
+    })
+    .catch(console.error)
+}
 
 module.exports = {
   onGetPosts,
@@ -81,6 +86,6 @@ module.exports = {
   onDeletePost,
   onSetAllPosts,
   onUpdatePost,
-  onAddComment
-  // onDeleteComment
+  onAddComment,
+  onDeleteComment
 }

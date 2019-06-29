@@ -35,7 +35,7 @@
     <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
 
     {{#if (userPosts comment.postedBy._id)}}
-    <button type="button" class="btn btn-danger deleteComment" data-deletecomment="{{comment._id}}">Delete</button>
+    <button type="button" class="btn btn-danger delete-comment" data-deletecomment="{{comment._id}}">Delete</button>
     {{/if}}
   </p>
 
@@ -56,8 +56,8 @@
     {{/if}}
 
     {{#if (userPosts post.owner._id)}}
-    <button type="button" class="btn btn-info" data-update={{post.id}}>Update</button>
-    <button type="button" class="btn btn-danger" data-delete={{post.id}}>Delete</button>
+    <button type="button" class="btn btn-info update-post" data-update={{post.id}}>Update</button>
+    <button type="button" class="btn btn-danger delete-post" data-delete={{post.id}}>Delete</button>
 
     {{/if}}
   </section>
