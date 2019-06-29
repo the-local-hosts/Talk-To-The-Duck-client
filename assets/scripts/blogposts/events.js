@@ -42,7 +42,7 @@ const onUpdatePost = function (event) {
       onGetPosts()
       $('#update-post').modal('toggle') // show modal
     })
-    .catch(console.error)// need to make the update call to api but first I need to fix the string
+    .catch(ui.onFailure)// need to make the update call to api but first I need to fix the string
 }
 
 const onDeletePost = function (event) {
@@ -76,7 +76,7 @@ const onDeleteComment = function (event) {
     .then(() => {
       onGetPosts()
     })
-    .catch(console.error)
+    .catch(ui.onFailure)
 }
 
 module.exports = {
