@@ -13,9 +13,17 @@ const setPictureModal = function () {
   $('#profile-update-modal').modal('toggle')
 }
 
+const changeProfilePictureFailure = function (url) {
+  $('#profile-update-modal').modal('toggle')
+  $('#message').text('updating profile picture failed!')
+  setTimeout(() => $('#message').text(''), 4000)
+}
+
 const changeProfilePicture = function (url) {
   $('#image-display').attr('src', url.upload.url)
   $('#profile-update-modal').modal('toggle')
+  $('#message').text('Profile Picture Successfully updated!')
+  setTimeout(() => $('#message').text(''), 4000)
 }
 
 const setProfilePicture = function () {
@@ -89,6 +97,7 @@ module.exports = {
   removeLogIn,
   removeProfile,
   changePasswordSuccess,
+  changeProfilePictureFailure,
   signOutSuccess,
   welcomeMessage,
   setPictureModal,

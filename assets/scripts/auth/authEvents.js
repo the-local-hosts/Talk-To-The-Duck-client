@@ -38,7 +38,7 @@ const onSetPicture = function (event) {
     data: formData
   })
     .then(ui.changeProfilePicture)
-    .catch(console.log)
+    .catch(ui.changeProfilePictureFailure)
 }
 
 const onSignIn = function (event) {
