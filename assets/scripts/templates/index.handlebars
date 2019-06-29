@@ -7,7 +7,11 @@
         <button type="button" class="btn btn-danger btn-sm mx-1 delete-post" data-delete={{post.id}}>Delete Post</button>
       {{else}}
         {{#if (isLoggedIn)}}
-          <button type="button" class="btn btn-info btn-sm follow-user" data-follow={{post.id}}>Follow Creator</button>
+          {{#if (alreadyFollows post.owner._id)}}
+            <button type="button" class="btn btn-info btn-sm follow-user" disabled>Already Following User</button>
+          {{else}}
+            <button type="button" class="btn btn-info btn-sm follow-user" data-follow={{post.id}}>Follow Creator</button>
+          {{/if}}
         {{/if}}
       {{/if}}
     </div>
@@ -27,7 +31,7 @@
 </div>
     <p>{{ formatDate post.createdAt }}</p>
     <div class="">
-      <!-- <button type="button" class="btn btn-outline-primary btn-sm"></button> -->
+      <button type="button" class="btn btn-outline-primary btn-sm">Likes {{post.likes.length}}</button>
       <span>Comments: <span class="number-comments">{{post.comments.length}}</span></span>
     </div>
     <div class="comments">
