@@ -28,7 +28,10 @@ const setLogin = function () {
 }
 
 const setProfile = function () {
-  const profile = profileTemplate()
+  console.log(store.user)
+  const profile = profileTemplate(
+    {followers: store.user.followers,
+      following: store.user.following})
   $('#auth-container').html(profile)
 }
 

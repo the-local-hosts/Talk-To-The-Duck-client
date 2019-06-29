@@ -21,21 +21,45 @@ textarea {
   white-space: pre-wrap;
 }
 
-.navbar .image img {
+img {
   border-radius: 40%;
-  display: center;
-  display: block;
-  display: inline-block;
-  height: 60px;
-  // margin: -8px 0;
-  margin-bottom: 15px;
-  margin-left: 90px;
-  width: 60px;
+  height: 100px;
+  width: 100px;
 }
 
 .container {
-  // background-color: cyan;
   width: 70%;
+}
+
+.image-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1.25em;
+}
+
+.followers-info {
+  display: flex;
+  flex-direction: center;
+  margin-bottom: 1em;
+
+  > span {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.password-form {
+  > p {
+    text-align: center;
+  }
+}
+
+.profile-action-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title-container {
@@ -45,6 +69,14 @@ textarea {
 
 .post-title {
   flex-grow: 1;
+}
+
+.dropdown-menu {
+  width: 25vw;
+}
+
+.add-comment {
+  margin: 0 auto;
 }
 
 main > h5 {
