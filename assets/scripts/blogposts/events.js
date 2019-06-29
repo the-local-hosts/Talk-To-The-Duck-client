@@ -63,9 +63,9 @@ const onAddComment = function (event) {
   store.addedComment = formData.comment
   api.createComment(formData)
     .then(() => {
-      ui.onAddCommentSuccess()
       onGetPosts()
     })
+    .then(ui.onAddCommentSuccess())
     .catch(ui.onFailure)
 }
 
