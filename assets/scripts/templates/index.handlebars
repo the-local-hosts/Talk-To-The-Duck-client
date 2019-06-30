@@ -20,7 +20,7 @@
     <h5>Written by: {{post.owner.name}}</h5>
     <div class="a-post">
 {{#if post.longPost}}
-<!-- do not change ugliness, it is necessary for formatting -->
+<!-- do not change, it is necessary for formatting -->
 <p data-body={{post.id}}>
 {{ splitTextFirstHalf post.postBody }}<span class="dots"> . . .</span> <button class="more-btn" data-num="{{post.id}}">Read More</button><span class="hidden expand">{{ splitTextSecondHalf post.postBody }}
       </span>

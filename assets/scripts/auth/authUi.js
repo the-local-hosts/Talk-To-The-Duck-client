@@ -83,7 +83,7 @@ const welcomeMessage = function () {
 }
 
 const onAuthFailure = function () {
-  $('#message').text('Something went wrong, please try again')
+  $('#message').text('Something went wrong, please try again. Your username and email must be unique.')
   setTimeout(() => $('#message').text(''), 4000)
   $('form').trigger('reset')
 }
