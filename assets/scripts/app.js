@@ -4,12 +4,6 @@ const authEventsHandler = require('./auth/authEvents')
 const blogpostsEventsHandler = require('./blogposts/events.js')
 const blogpostsUi = require('./blogposts/ui.js')
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
-
 $(() => {
   // User authentication listeners
   $('#auth-container').on('click', '#returning-user', authEventsHandler.onSetSignIn)

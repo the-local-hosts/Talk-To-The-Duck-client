@@ -43,7 +43,7 @@ const onUpdatePost = function (event) {
       onGetPosts()
       $('#update-post').modal('toggle') // show modal
     })
-    .catch(ui.onFailure)// need to make the update call to api but first I need to fix the string
+    .catch(ui.onFailure)
 }
 
 const onDeletePost = function (event) {
@@ -107,14 +107,14 @@ const onFollowUser = function (event) {
       authUI.setProfilePicture()
       onSetAllPosts()
     })
-    .catch(console.error)
+    .catch(ui.onFailure)
 }
 
 const onLikePost = function (event) {
   const postID = $(event.target).data('like')
   api.likePost(postID)
     .then(onGetPosts)
-    .catch(console.error)
+    .catch(ui.onFailure)
 }
 
 module.exports = {
