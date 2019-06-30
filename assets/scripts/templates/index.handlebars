@@ -33,7 +33,7 @@
 </div>
     <p>{{ formatDate post.createdAt }}</p>
     <hr>
-    <div class="">
+    <div class="likes">
       {{#if (isLoggedIn)}}
         {{#if (alreadyLikes post.id)}}
           <button type="button" class="btn btn-outline-primary btn-sm like-post" disabled>Likes {{post.likes.length}}</button>
@@ -43,8 +43,6 @@
       {{else}}
         <button type="button" class="btn btn-outline-primary btn-sm" disabled>Likes {{post.likes.length}}</button>
       {{/if}}
-    <div class="likes">
-      <button type="button" class="btn btn-outline-primary btn-sm">Likes {{post.likes.length}}</button>
       <span>Comments: <span class="number-comments">{{post.comments.length}}</span></span>
     </div>
     <div class="comments">
