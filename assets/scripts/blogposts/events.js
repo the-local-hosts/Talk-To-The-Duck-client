@@ -93,6 +93,7 @@ const onUpdateComment = function (event) {
     .then(ui.onUpdateCommentSuccess)
     .catch(ui.onFailure)
 }
+
 const onFollowUser = function (event) {
   const postID = $(event.target).data('follow')
   const post = store.posts.find(post => post.id === postID)
@@ -109,6 +110,13 @@ const onFollowUser = function (event) {
     .catch(console.error)
 }
 
+const onLikePost = function (event) {
+  const postID = $(event.target).data('like')
+  api.likePost(postID)
+    .then(onGetPosts)
+    .catch(console.error)
+}
+
 module.exports = {
   onGetPosts,
   onCreatePost,
@@ -119,5 +127,6 @@ module.exports = {
   onAddComment,
   onDeleteComment,
   onUpdateComment,
-  onFollowUser
+  onFollowUser,
+  onLikePost
 }

@@ -73,10 +73,21 @@ const commentUpdate = function (formData, postId, commentId) {
     }
   })
 }
+
 const followUser = function (userToFollowID) {
   return $.ajax({
     url: config.apiUrl + '/follow/' + userToFollowID,
     method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const likePost = function (postID) {
+  return $.ajax({
+    url: config.apiUrl + '/blogpost/' + postID + '/likes',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -91,5 +102,6 @@ module.exports = {
   createComment,
   commentDestroy,
   commentUpdate,
-  followUser
+  followUser,
+  likePost
 }

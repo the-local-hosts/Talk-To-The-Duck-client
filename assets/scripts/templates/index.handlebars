@@ -31,7 +31,15 @@
 </div>
     <p>{{ formatDate post.createdAt }}</p>
     <div class="">
-      <button type="button" class="btn btn-outline-primary btn-sm">Likes {{post.likes.length}}</button>
+      {{#if (isLoggedIn)}}
+        {{#if (alreadyLikes post.id)}}
+          <button type="button" class="btn btn-outline-primary btn-sm like-post" disabled>Likes {{post.likes.length}}</button>
+        {{else}}
+          <button type="button" class="btn btn-outline-primary btn-sm like-post" data-like={{post.id}}>Likes {{post.likes.length}}</button>
+        {{/if}}
+      {{else}}
+        <button type="button" class="btn btn-outline-primary btn-sm" disabled>Likes {{post.likes.length}}</button>
+      {{/if}}
       <span>Comments: <span class="number-comments">{{post.comments.length}}</span></span>
     </div>
     <div class="comments">
@@ -45,7 +53,6 @@
             <input type="submit" value="Edit Comment" />
           </form>
         </div>
-
         <button type="button" class="btn btn-danger btn-sm mx-1 delete-comment" data-deletecomment="{{comment._id}}">Delete</button>
       {{/if}}
     </p>
