@@ -2,6 +2,7 @@
 
 const api = require('./api.js')
 const ui = require('./ui.js')
+const authUI = require('./../auth/authUi.js')
 const store = require('./../store.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
@@ -79,6 +80,43 @@ const onDeleteComment = function (event) {
     .catch(ui.onFailure)
 }
 
+const onUpdateComment = function (event) {
+  event.preventDefault()
+  const commentId = $(event.target).data('updatecomment')
+  const form = event.target
+  const formData = getFormFields(form)
+  const post = store.posts.find((post) => post.comments.find(comment => comment._id === commentId))
+  api.commentUpdate(formData, post.id, commentId)
+    .then(() => {
+      onGetPosts()
+    })
+    .then(ui.onUpdateCommentSuccess)
+    .catch(ui.onFailure)
+}
+
+const onFollowUser = function (event) {
+  const postID = $(event.target).data('follow')
+  const post = store.posts.find(post => post.id === postID)
+  const userToFollowID = post.owner._id
+  api.followUser(userToFollowID)
+    .then((response) => {
+      store.user = response.user
+      authUI.setProfile()
+      authUI.setProfile()
+      authUI.setUserNameInNavBar(store.user.name)
+      authUI.setProfilePicture()
+      onSetAllPosts()
+    })
+    .catch(console.error)
+}
+
+const onLikePost = function (event) {
+  const postID = $(event.target).data('like')
+  api.likePost(postID)
+    .then(onGetPosts)
+    .catch(console.error)
+}
+
 module.exports = {
   onGetPosts,
   onCreatePost,
@@ -87,5 +125,8 @@ module.exports = {
   onSetAllPosts,
   onUpdatePost,
   onAddComment,
-  onDeleteComment
+  onDeleteComment,
+  onUpdateComment,
+  onFollowUser,
+  onLikePost
 }

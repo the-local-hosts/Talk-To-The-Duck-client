@@ -38,7 +38,7 @@ const onSetPicture = function (event) {
     data: formData
   })
     .then(ui.changeProfilePicture)
-    .catch(console.log)
+    .catch(ui.changeProfilePictureFailure)
 }
 
 const onSignIn = function (event) {
@@ -52,7 +52,7 @@ const onSignIn = function (event) {
       ui.setProfile()
       ui.setUserNameInNavBar(store.user.name)
       ui.setProfilePicture()
-      postsEvents.onSetAllPosts()
+      postsEvents.onGetPosts()
     })
     .then(ui.welcomeMessage)
     .then(postsEvents.onGetPosts)
@@ -74,7 +74,6 @@ const onSignOut = function (event) {
   api.signOut()
     .then((response) => {
       store.user = false
-      // store.user = {}
       postsEvents.onSetAllPosts(store.posts)
       onSetLogIn()
     })
