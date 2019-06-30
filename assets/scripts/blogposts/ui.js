@@ -73,7 +73,6 @@ const onDeleteSuccess = function () {
 }
 
 const onAddCommentSuccess = function () {
-  // $(`#${store.post_id}`).find('.comment-message').text('Successfully added!')
   setTimeout(() => $(`#${store.post_id}`).find('.comment-message').text(''), 4000)
   $('form').trigger('reset')
   let num = $(`#${store.post_id}`).find('.number-comments').text()

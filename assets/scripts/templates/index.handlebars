@@ -1,7 +1,8 @@
 {{#each posts as |post|}}
   <section class="each-post" id="{{post.id}}">
     <div class="title-container">
-      <h3 class="post-title"data-title={{post.id}}>{{post.title}}</h3>
+      <div class="post-title"><h3 data-title={{post.id}}>{{post.title}}</h3></div>
+      <div class="post-buttons">
       {{#if (userPosts post.owner._id)}}
         <button type="button" class="btn btn-info btn-sm mx-1 update-post" data-update={{post.id}}>Update Post</button>
         <button type="button" class="btn btn-danger btn-sm mx-1 delete-post" data-delete={{post.id}}>Delete Post</button>
@@ -15,10 +16,11 @@
         {{/if}}
       {{/if}}
     </div>
+    </div>
     <h5>Written by: {{post.owner.name}}</h5>
     <div class="a-post">
 {{#if post.longPost}}
-<!-- do not change ugliness, it is necessary for formatting -->
+<!-- do not change, it is necessary for formatting -->
 <p data-body={{post.id}}>
 {{ splitTextFirstHalf post.postBody }}<span class="dots"> . . .</span> <button class="more-btn" data-num="{{post.id}}">Read More</button><span class="hidden expand">{{ splitTextSecondHalf post.postBody }}
       </span>
@@ -30,7 +32,8 @@
     </p>
 </div>
     <p>{{ formatDate post.createdAt }}</p>
-    <div class="">
+    <hr>
+    <div class="likes">
       {{#if (isLoggedIn)}}
         {{#if (alreadyLikes post.id)}}
           <button type="button" class="btn btn-outline-primary btn-sm like-post" disabled>Likes {{post.likes.length}}</button>
@@ -45,6 +48,7 @@
     <div class="comments">
     {{#each post.comments as |comment|}}
       <p><strong>{{comment.postedBy.name}}</strong> says: {{comment.text}}
+        <br>
       {{#if (userPosts comment.postedBy._id)}}
         <button type="button" class="btn btn-info btn-sm mx-1 show-update-comment" data-showupdatecomment="{{comment._id}}">Update</button>
         <div class="update-div hidden">
