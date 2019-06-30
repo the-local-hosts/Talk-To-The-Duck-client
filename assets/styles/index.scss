@@ -1,5 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+
+body {
+  // background-image: url('../../public/duckfigurines.jpg');
+  background-image: url('../../public/rubber-ducks.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
+}
+
+img {
+  border-radius: 40%;
+  height: 100px;
+  width: 100px;
+}
 
 main {
   align-items: center;
@@ -7,11 +24,34 @@ main {
   flex-direction: column;
   font-family: 'Quicksand', sans-serif;
   justify-content: center;
+
+  > h5 {
+    margin-top: 80px;
+    text-align: center;
+  }
 }
 
-.hidden {
-  display: none;
+nav {
+  height: 125px;
+
+  // > img {
+  //   object-fit: contain;
+  // }
 }
+
+.duck-logo {
+  // height: 100%;
+  // width: 500px;
+  height: 115px;
+  margin-top: 10px;
+
+  > img {
+    object-fit: contain;
+    width: 410px;
+  }
+}
+
+
 
 textarea {
   display: block;
@@ -21,21 +61,33 @@ textarea {
   white-space: pre-wrap;
 }
 
-img {
-  border-radius: 40%;
-  height: 100px;
-  width: 100px;
+.add-comment {
+  margin: 0 auto;
 }
 
 .container {
   width: 70%;
 }
 
-.image-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 1.25em;
+.dropdown-menu {
+  width: 25vw;
+}
+
+.each-post {
+  border: 5px solid black;
+  margin: 130px auto;
+  padding: 50px;
+  text-align: left;
+  background-color: rgba(220, 220, 220, .8);
+
+  > button {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  > form {
+    margin-left: -5px;
+  }
 }
 
 .followers-info {
@@ -49,10 +101,25 @@ img {
   }
 }
 
+.hidden {
+  display: none;
+}
+
+.image-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1.25em;
+}
+
 .password-form {
   > p {
     text-align: center;
   }
+}
+
+.post-title {
+  flex-grow: 1;
 }
 
 .profile-action-buttons {
@@ -65,37 +132,30 @@ img {
 .title-container {
   display: flex;
   flex-direction: row;
+  > .post-title {
+    width: 83%;
+    > h3 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+  > .post-buttons {
+    width: 17%;
+    > button {
+      margin: 5px auto;
+    }
+  }
 }
 
-.post-title {
-  flex-grow: 1;
+.likes {
+  // margin: 10px;
+  padding: 15px 0px;
+
+  > button {
+    margin-right: 20px;
+  }
 }
 
-.dropdown-menu {
-  width: 25vw;
-}
-
-.add-comment {
-  margin: 0 auto;
-}
-
-main > h5 {
-  margin-top: 80px;
-  text-align: center;
-}
-
-.each-post {
-  border: 5px solid black;
-  margin: 80px auto;
-  padding: 50px;
-  text-align: left;
-}
-
-.each-post > button {
-  margin: 10px;
-  padding: 10px;
-}
-
-.each-post > form {
-  margin-left: -5px;
+.show-update-comment {
+  margin-top: 20px;
 }
