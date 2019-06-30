@@ -38,6 +38,7 @@ $(() => {
   $('.container').on('click', '.show-update-comment', blogpostsUi.onShowUpdate)
   $('.container').on('submit', '.update-comment', blogpostsEventsHandler.onUpdateComment)
   $('.container').on('click', '.follow-user', blogpostsEventsHandler.onFollowUser)
+  $('.container').on('click', '.like-post', blogpostsEventsHandler.onLikePost)
 
   blogpostsEventsHandler.onGetPosts() // get all posts before user sign-in
   authEventsHandler.onSetLogIn() // Important run this method last
