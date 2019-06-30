@@ -22,7 +22,7 @@
 - Express.js
 - Handlebars
 - jQuery/AJAX
-- npm packages we added: moment
+- moment (node package)
 - AWS
 
 ### The Process
@@ -59,16 +59,22 @@ In our planning stage, we decided that the best way to collaborate, particularly
 
 In general, our actual process stayed pretty close to the schedule and assignments that we set. By about halfway through our second day, we had begun to split up and work on tasks individually. However, we remained in close communication and collaborated on tackling issues throughout the entire project.
 
-As much as we like to think we're the dream team, we obviously ran into some issues along the way! Some problems we overcame include (but aren't limited to):
+As much as we like to think we're a dream team, we obviously ran into some issues along the way! Some problems we overcame include (but aren't limited to):
 1. Naming issues. We originally named our primary collection "post" with a document of "body" - then realized that might cause some problems with functionality, if not just readability confusion. We modified our collection to "blogPost" and the document to "postBody."
 2. Ownership. We had some trouble figuring out how to restrict editability of posts and comments to those that a given user created. We solved this by creating a new document.
 3. Association between posts and comments. We solved this by making comments a document as an array within blogPosts. This is probably the biggest difference between our original plan and our final product.
 4. Posts were displaying in blocks of text without line breaks that the user had included while writing. We solved this with simple CSS.
 5. "Read More/Show Less" feature for posts. We found a node package that seemed like the perfect fit for accomplishing this goal, but a recent jQuery update removed the selector that the package functioned on. Holly solved this problem by crafting a couple of new methods.
 
+##### Future Iterations
+We were able to accomplish several of our stretch goals, but a couple of things that we did not get to were functionality to view a single post, search posts, or tags for posts.
 
-- Came up with theme
-- Planning: wireframe, erd
-- Pair programming
-- Back end: modify user, create blogposts and comments (talk about naming debacle) > pictures
-- Front end: nav, auth > index > create > update and delete > styling
+[Back End Repository](https://github.com/the-local-hosts/Talk-To-The-Duck-API)
+
+Wireframe:
+
+![Wireframe](./public/wireframetttd.jpg)
+
+Background Photo Credit:
+
+[CC BY 3.0](https://en.wikipedia.org/w/index.php?curid=14230777)

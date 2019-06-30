@@ -1,10 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
 
 body {
-  // background-image: url('public/duckfigurines.jpg');
   background-image: url('public/rubber-ducks.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,18 +32,6 @@ nav {
   height: 125px;
 }
 
-.duck-logo {
-  height: 115px;
-  margin-top: 10px;
-
-  > img {
-    object-fit: contain;
-    width: 410px;
-  }
-}
-
-
-
 textarea {
   display: block;
 }
@@ -65,6 +50,16 @@ textarea {
 
 .dropdown-menu {
   width: 25vw;
+}
+
+.duck-logo {
+  height: 115px;
+  margin-top: 10px;
+
+  > img {
+    object-fit: contain;
+    width: 410px;
+  }
 }
 
 .each-post {
@@ -106,6 +101,14 @@ textarea {
   margin: 1.25em;
 }
 
+.likes {
+  padding: 15px 0px;
+
+  > button {
+    margin-right: 20px;
+  }
+}
+
 .password-form {
   > p {
     text-align: center;
@@ -123,32 +126,28 @@ textarea {
   justify-content: center;
 }
 
+.show-update-comment {
+  margin-top: 20px;
+}
+
 .title-container {
   display: flex;
   flex-direction: row;
+
   > .post-title {
     width: 83%;
+
     > h3 {
       font-size: 40px;
       font-weight: bold;
     }
   }
+
   > .post-buttons {
     width: 17%;
+
     > button {
       margin: 5px auto;
     }
   }
-}
-
-.likes {
-  padding: 15px 0px;
-
-  > button {
-    margin-right: 20px;
-  }
-}
-
-.show-update-comment {
-  margin-top: 20px;
 }
